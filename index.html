@@ -320,26 +320,33 @@
                     </div>
                 </div>
                 <div class="reveal glass p-10 rounded-[3rem]">
-                    <form class="space-y-6">
+                    <form id="contact-form" action="https://formspree.io/f/xvzyyerl" method="POST" class="space-y-6">
+                        <!-- Identificador para el correo -->
+                        <input type="hidden" name="_subject" value="Nueva solicitud de acceso PLAYPLEX">
+                        
                         <div>
                             <label class="block text-gray-400 text-sm font-medium mb-2">Nombre</label>
-                            <input type="text" required class="w-full rounded-2xl px-6 py-4" placeholder="Tu nombre">
+                            <input type="text" name="nombre" required class="w-full rounded-2xl px-6 py-4" placeholder="Tu nombre">
                         </div>
                         <div>
                             <label class="block text-gray-400 text-sm font-medium mb-2">Mail de tu cuenta Plex</label>
-                            <input type="email" required class="w-full rounded-2xl px-6 py-4" placeholder="tu@mail.com">
+                            <input type="email" name="email" required class="w-full rounded-2xl px-6 py-4" placeholder="tu@mail.com">
                         </div>
                         <div>
                             <label class="block text-gray-400 text-sm font-medium mb-2">Dispositivo</label>
-                            <select class="w-full rounded-2xl px-6 py-4 appearance-none">
-                                <option>Smart TV</option>
-                                <option>Chromecast / Fire TV</option>
-                                <option>Celular / Tablet</option>
-                                <option>Computadora</option>
+                            <select name="dispositivo" class="w-full rounded-2xl px-6 py-4 appearance-none">
+                                <option value="Smart TV">Smart TV</option>
+                                <option value="Chromecast / Fire TV">Chromecast / Fire TV</option>
+                                <option value="Celular / Tablet">Celular / Tablet</option>
+                                <option value="Computadora">Computadora</option>
                             </select>
                         </div>
-                        <button type="submit" class="w-full bg-plex text-black font-bold py-5 rounded-2xl hover:bg-plex-hover transition-all flex items-center justify-center gap-2">
-                            Solicitar ahora <i data-lucide="send" class="w-5 h-5"></i>
+                        
+                        <div id="form-status" class="hidden p-4 rounded-xl text-center text-sm font-medium"></div>
+
+                        <button id="submit-btn" type="submit" class="w-full bg-plex text-black font-bold py-5 rounded-2xl hover:bg-plex-hover transition-all flex items-center justify-center gap-2">
+                            <span>Solicitar ahora</span>
+                            <i data-lucide="send" class="w-5 h-5"></i>
                         </button>
                     </form>
                 </div>

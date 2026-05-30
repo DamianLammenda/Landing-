@@ -223,12 +223,48 @@ function initFAQ() {
 }
 
 function initForm() {
-    const form = document.querySelector('form');
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    const btn = document.getElementById('submit-btn');
+
     if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            alert('¡Gracias! Tu solicitud ha sido enviada. Nos contactaremos pronto.');
-            form.reset();
+            
+            // Estado de carga
+            btn.disabled = true;
+            btn.querySelector('span').innerText = 'Enviando...';
+            status.classList.remove('hidden', 'bg-red-500/20', 'text-red-500', 'bg-green-500/20', 'text-green-500');
+            status.classList.add('block', 'bg-white/5', 'text-gray-400');
+            status.innerText = 'Procesando solicitud...';
+
+            const data = new FormData(form);
+            
+            try {
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    status.classList.replace('text-gray-400', 'text-green-500');
+                    status.classList.replace('bg-white/5', 'bg-green-500/20');
+                    status.innerText = '¡Solicitud enviada con éxito! Te contactaremos pronto.';
+                    form.reset();
+                } else {
+                    throw new Error();
+                }
+            } catch (error) {
+                status.classList.replace('text-gray-400', 'text-red-500');
+                status.classList.replace('bg-white/5', 'bg-red-500/20');
+                status.innerText = 'Ups! Hubo un problema. Por favor intentá de nuevo.';
+            } finally {
+                btn.disabled = false;
+                btn.querySelector('span').innerText = 'Solicitar ahora';
+            }
         });
     }
 }
