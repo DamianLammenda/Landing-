@@ -1,0 +1,104 @@
+/* PlayPlex Static Styles */
+:root {
+    --plex-orange: #e5a00d;
+    --plex-orange-hover: #ffb71c;
+    --bg-dark: #0a0a0a;
+    --bg-card: #141414;
+}
+
+html {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #000;
+}
+::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: var(--plex-orange);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+    opacity: 0;
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0) !important;
+}
+
+@keyframes pulse-slow {
+    0%, 100% { opacity: 0.4; transform: scale(1.05); }
+    50% { opacity: 0.6; transform: scale(1); }
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 8s ease-in-out infinite;
+}
+
+/* Glassmorphism */
+.glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Plex Orange Text Gradient */
+.text-plex-gradient {
+    background: linear-gradient(to right, #e5a00d, #ffda85);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Navigation Scrolled State */
+.nav-scrolled {
+    background: rgba(0, 0, 0, 0.9) !important;
+    backdrop-filter: blur(10px);
+    padding: 1rem 0 !important;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+/* Library Cards */
+.library-card img {
+    transition: transform 0.7s ease;
+}
+.library-card:hover img {
+    transform: scale(1.1);
+}
+
+/* Form Styles */
+input, select, textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: white;
+    transition: all 0.3s ease;
+}
+input:focus, select:focus {
+    border-color: var(--plex-orange);
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(229, 160, 13, 0.2);
+}
