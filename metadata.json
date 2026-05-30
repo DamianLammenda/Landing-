@@ -1,0 +1,6 @@
+{
+  "name": "PLAYPLEX",
+  "description": "Landing page profesional para el servidor Plex PLAYPLEX, con diseño inspirado en plataformas de streaming.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
