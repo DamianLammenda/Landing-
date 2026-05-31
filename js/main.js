@@ -22,12 +22,12 @@ const DATA = {
     ],
     libraries: [
         { id: "movies", name: "Películas", description: "Estrenos y clásicos en la mejor calidad.", image: "img/library_movies.png" },
-        { id: "series", name: "Series", description: "Todas las temporadas de tus shows favoritos.", image: "img/library_movies.png" },
+        { id: "series", name: "Series", description: "Todas las temporadas de tus shows favoritos.", image: "img/library_series.png" },
         { id: "anime-series", name: "Anime Series", description: "Los mejores títulos directos desde Japón.", image: "img/library_anime.png" },
         { id: "anime-movies", name: "Anime Películas", description: "Largometrajes épicos de animación.", image: "img/library_anime.png" },
-        { id: "argentinas", name: "Películas Argentinas", description: "Lo mejor del cine nacional.", image: "img/library_movies.png" },
-        { id: "cartoons", name: "Dibujos Animados", description: "Para los más chicos.", image: "img/library_anime.png" },
-        { id: "child", name: "Películas Infantiles", description: "Mundo mágico para toda la familia.", image: "img/library_anime.png" },
+        { id: "argentinas", name: "Películas Argentinas", description: "Lo mejor del cine nacional.", image: "img/library_argentinas.png" },
+        { id: "cartoons", name: "Dibujos Animados", description: "Para los más chicos.", image: "img/library_kids.png" },
+        { id: "child", name: "Películas Infantiles", description: "Mundo mágico para toda la familia.", image: "img/library_kids.png" },
         { id: "retro", name: "Series Retro", description: "Clásicos que marcaron una época.", image: "img/library_retro.png" }
     ],
     advantages: [
