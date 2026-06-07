@@ -496,14 +496,14 @@ async function initTrending() {
 
     const applyRevealAnimations = () => {
         const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
-        const observer = new IntersectionObserver((entries) => {
+        const localObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
                 }
             });
         }, observerOptions);
-        grid.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        grid.querySelectorAll('.reveal').forEach(el => localObserver.observe(el));
     };
 
     fetchTrending('movie');
