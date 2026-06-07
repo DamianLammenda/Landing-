@@ -214,6 +214,51 @@
         </div>
     </section>
 
+    <!-- Explorador Section (TMDB) -->
+    <section id="explorador" class="py-24 bg-black relative">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between mb-12 gap-8">
+                <div>
+                    <h2 class="text-4xl font-bold text-white mb-4">Tendencias Globales</h2>
+                    <p class="text-gray-400">Explorá lo más visto en el mundo y consultá su disponibilidad.</p>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 flex-1 lg:max-w-2xl">
+                    <div class="relative flex-1">
+                        <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 text-gray-500 w-5 h-5"></i>
+                        <input type="text" id="tmdb-search" placeholder="Buscar película, serie o actor..." 
+                            class="w-full bg-white/5 border border-white/10 rounded-2xl py-3 pl-12 pr-4 text-white placeholder-gray-500 focus:outline-none focus:border-plex/50 transition-all">
+                    </div>
+                    <div class="flex gap-2 bg-white/5 p-1 rounded-2xl h-fit">
+                        <button id="btn-trending-movie" class="px-6 py-2 rounded-xl text-sm font-bold transition-all bg-plex text-black">Películas</button>
+                        <button id="btn-trending-tv" class="px-6 py-2 rounded-xl text-sm font-bold transition-all text-gray-400 hover:text-white">Series</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="trending-grid" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!-- Data will be populated by JS -->
+            </div>
+            
+            <div id="search-results-info" class="hidden mt-8 text-center text-gray-500">
+                Mostrando resultados de búsqueda. <button id="btn-clear-search" class="text-plex font-bold underline ml-2">Volver a tendencias</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Movie/TV Detail Modal -->
+    <div id="tmdb-modal" class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="glass max-w-4xl w-full max-h-[90vh] overflow-y-auto rounded-[2rem] border border-white/10 relative">
+            <button id="close-tmdb-modal" class="absolute top-6 right-6 z-20 w-10 h-10 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-plex hover:text-black transition-all">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            
+            <div id="modal-content" class="flex flex-col md:flex-row">
+                <!-- Data populated by JS -->
+            </div>
+        </div>
+    </div>
+
     <!-- Bibliotecas Section -->
     <section id="bibliotecas" class="py-24 bg-[#0a0a0a]">
         <div class="max-w-7xl mx-auto px-6">
@@ -309,6 +354,100 @@
             <h2 class="text-4xl font-bold text-white mb-12 text-center">Preguntas Frecuentes</h2>
             <div id="faq-list" class="bg-white/5 rounded-[2rem] p-8 border border-white/5 shadow-2xl">
                 <!-- Dynamically Populated -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Optimización Section -->
+    <section class="py-24 bg-black relative overflow-hidden">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-plex/5 via-transparent to-transparent opacity-50"></div>
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 underline-offset-8">
+                <h2 class="text-4xl font-bold text-white mb-4">Guía de Optimización</h2>
+                <div class="w-24 h-1 bg-plex mx-auto rounded-full"></div>
+                <p class="text-gray-400 mt-6 max-w-2xl mx-auto">Para disfrutar de la mejor experiencia visual y una interfaz limpia, te recomendamos aplicar estos ajustes una sola vez.</p>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Calidad de Video -->
+                <div class="reveal glass p-8 rounded-[2.5rem] border border-white/5 hover:border-plex/20 transition-all group">
+                    <div class="w-12 h-12 bg-plex/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="tv-2" class="text-plex w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Calidad de Video</h3>
+                    <p class="text-gray-500 mb-6 text-xs leading-relaxed italic">Ruta: Ajustes > Calidad de Vídeo</p>
+                    
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-xs text-gray-300">
+                            <span class="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 text-[10px] font-bold text-plex">1</span>
+                            <span>Calidad Remota: <b>Máximo / Original</b>.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-xs text-gray-300">
+                            <span class="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 text-[10px] font-bold text-plex">2</span>
+                            <span>Ajustar Automáticamente: <b>No</b>.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Conexión Segura -->
+                <div class="reveal glass p-8 rounded-[2.5rem] border border-white/5 hover:border-plex/20 transition-all group">
+                    <div class="w-12 h-12 bg-plex/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="shield-off" class="text-plex w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Conexión Segura</h3>
+                    <p class="text-gray-500 mb-6 text-xs leading-relaxed italic">Ruta: Ajustes > Avanzado (o Red)</p>
+                    
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-xs text-gray-300">
+                            <span class="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 text-[10px] font-bold text-plex">1</span>
+                            <span>Permitir conexiones inseguras: <b>SIEMPRE</b>.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-xs text-gray-300">
+                            <span class="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 text-[10px] font-bold text-plex">2</span>
+                            <span>Esto evita el buffering y fallos de carga.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Sonido y Fluidez -->
+                <div class="reveal glass p-8 rounded-[2.5rem] border border-white/5 hover:border-plex/20 transition-all group">
+                    <div class="w-12 h-12 bg-plex/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="volume-2" class="text-plex w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Audio y Fluidez</h3>
+                    <p class="text-gray-500 mb-6 text-xs leading-relaxed italic">Ruta: Ajustes > Reproductor</p>
+                    
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-xs text-gray-300">
+                            <span class="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 text-[10px] font-bold text-plex">1</span>
+                            <span>Ajustar Refresco (Frame Rate): <b>Sí</b>.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-xs text-gray-300">
+                            <span class="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 text-[10px] font-bold text-plex">2</span>
+                            <span>Audio Passthrough: <b>Óptico/HDMI</b>.</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Interfaz Limpia -->
+                <div class="reveal glass p-8 rounded-[2.5rem] border border-white/5 hover:border-plex/20 transition-all group">
+                    <div class="w-12 h-12 bg-plex/10 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                        <i data-lucide="layout-dashboard" class="text-plex w-6 h-6"></i>
+                    </div>
+                    <h3 class="text-lg font-bold text-white mb-3">Interfaz Limpia</h3>
+                    <p class="text-gray-500 mb-6 text-xs leading-relaxed italic">Ruta: Barra Lateral > Más</p>
+                    
+                    <ul class="space-y-3">
+                        <li class="flex items-start gap-3 text-xs text-gray-300">
+                            <span class="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 text-[10px] font-bold text-plex">1</span>
+                            <span><b>Unpin (Desanclar)</b>: Discover y Live TV.</span>
+                        </li>
+                        <li class="flex items-start gap-3 text-xs text-gray-300">
+                            <span class="w-5 h-5 rounded-full bg-white/5 flex items-center justify-center flex-shrink-0 text-[10px] font-bold text-plex">2</span>
+                            <span>Anclá solo tus bibliotecas de <b>PLAYPLEX</b>.</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
